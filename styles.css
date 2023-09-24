@@ -1,17 +1,28 @@
 header {
-    text-align: center;
-    background-color: transparent;
-}
-html, body {
-  text-align: center;
-  height: 100%;
   margin: auto;
-  padding: 0;
+  width: max-content;
+  height: max-content;
+  padding: 0.3px;
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #ffffff, #2e4bcc);
+}
+html {
+  background: linear-gradient(to bottom, #3498db, #2ecc71);
+  text-align: center;
+  margin: auto;
+
+  background-attachment: fixed;
 }
 body {
-  background: linear-gradient(to bottom, #3498db, #2ecc71);
+    display: inline-grid;
     text-align: center;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+form {
+  margin: 0 auto; 
+  
+  margin-top: 10px;
 }
 
 button {
@@ -30,10 +41,11 @@ button {
 .caixaResultat {
   margin: auto;
   text-align: center;
-  width: 30%;
+  width: max-content;
   background-color: red;
   padding: 10px;
-  border: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .boto {

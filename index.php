@@ -43,7 +43,7 @@ class Calculadora
 
 function mostrarResultat($result)
 {
-  echo "<h2>Resultat:</h2>";
+  echo "<h2>🥁Resultat:</h2>";
   echo "<p>$result</p>";
 }
 
@@ -52,10 +52,10 @@ function mostrarAlerta($message)
   echo "<div class=\"caixaResultat\">$message</div>";
 }
 
-function limpiarHistorial()
+function llimpiarHistorial()
 {
-  $_SESSION['history'] = array(); // Limpiar el historial
-  header("Location: " . $_SERVER['PHP_SELF']); // Redirigir a la misma página
+  $_SESSION['history'] = array(); // Llimpiar el historial
+  header("Location: " . $_SERVER['PHP_SELF']); // Redirigir a la mateixa página
   exit();
 }
 
@@ -64,8 +64,8 @@ if (!isset($_SESSION['history'])) {
   $_SESSION['history'] = array();
 }
 
-if (isset($_POST['limpiar_historial'])) {
-  limpiarHistorial();
+if (isset($_POST['llimpiar_historial'])) {
+  llimpiarHistorial();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -119,11 +119,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 
 <head>
-  <title>🧙Calculadora</title>
+  <title>Calculadora🧙‍♂️</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <header>
-  <h1>🧙Calculadora</h1>
+  <h1>Calculadora🧙‍♂️</h1>
 </header>
 
 <body>
@@ -154,50 +154,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </form>
   <?php
   // Mostra el resultat només si l'operació és vàlida
-
-  if (empty($operation) && empty($input1) && empty($input2)) {
-    mostrarAlerta("Si us plau, selecciona una operació i afegeix dos nombres.");
-    $result = 'Operació no vàlida';
-  }
-  if (empty($operation) && !empty($input1) && !empty($input2)) {
-    mostrarAlerta("Si us plau, selecciona una operacio.");
-    $result = 'Operació no vàlida';
-  }
-  if (!empty($operation) && empty($input1) && empty($input2) && $operation !== 'factorial') {
-    mostrarAlerta("Si us plau, afegeix dos nombres.");
-    $result = 'Operació no vàlida';
-  }
-  if (!empty($operation) && !empty($input1) && empty($input2)) {
-    mostrarAlerta("Si us plau, afegeix el nombre del segon terme.");
-    $result = 'Operació no vàlida';
-  }
-  if (!empty($operation) && empty($input1) && !empty($input2)) {
-    mostrarAlerta("Si us plau, afegeix el nombre del primer terme.");
-    $result = 'Operació no vàlida';
-  }
-  if ($result !== 'Operació no vàlida') {
-    mostrarResultat($result);
-  }
-  if ($operation === 'factorial' && empty($input1) && empty($input2)) {
-    mostrarAlerta("Si us plau, introdueix un valor.");
-    if (!empty($input1) && empty($input2)) {
-      $result = Calculadora::factorial($input1);
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($operation) && empty($input1) && empty($input2)) {
+      mostrarAlerta("⚠️Si us plau, selecciona una operació i afegeix dos nombres.⚠️");
+      $result = 'Operació no vàlida';
     }
-    // Afegir l'operació a l'històric
-  }
-  if ($result !== 'Operació no vàlida') {
-    $operacioRealitzada = "$input1 $operation $input2 = $result";
-    array_push($_SESSION['history'], $operacioRealitzada);
-  } else {
-    //$result = 'Operació no vàlida';
-    //mostrarAlerta("Si us plau, introdueix dos valors.");
-    //$result = 'Operació no vàlida';
+    if (empty($operation) && !empty($input1) && !empty($input2)) {
+      mostrarAlerta("⚠️Si us plau, selecciona una operacio.⚠️");
+      $result = 'Operació no vàlida';
+    }
+    if (!empty($operation) && empty($input1) && empty($input2) && $operation !== 'factorial') {
+      mostrarAlerta("⚠️Si us plau, afegeix dos nombres.⚠️");
+      $result = 'Operació no vàlida';
+    }
+    if (!empty($operation) && !empty($input1) && empty($input2)) {
+      mostrarAlerta("⚠️Si us plau, afegeix el nombre del segon terme.⚠️");
+      $result = 'Operació no vàlida';
+    }
+    if (!empty($operation) && empty($input1) && !empty($input2)) {
+      mostrarAlerta("⚠️Si us plau, afegeix el nombre del primer terme.⚠️");
+      $result = 'Operació no vàlida';
+    }
+    if ($result !== 'Operació no vàlida') {
+      mostrarResultat($result);
+    }
+    if ($operation === 'factorial' && empty($input1) && empty($input2)) {
+      mostrarAlerta("⚠️Si us plau, introdueix un valor.⚠️");
+      if (!empty($input1) && empty($input2)) {
+        $result = Calculadora::factorial($input1);
+      }
+      // Afegir l'operació a l'històric
+    }
+    if ($result !== 'Operació no vàlida') {
+      $operacioRealitzada = "$input1 $operation $input2 = $result";
+      array_push($_SESSION['history'], $operacioRealitzada);
+    } else {
+      //$result = 'Operació no vàlida';
+      //mostrarAlerta("Si us plau, introdueix dos valors.");
+      //$result = 'Operació no vàlida';
+    }
   }
   ?>
-  <h2>Historial d'operacions:</h2>
-  <form method="POST">
-    <button type="submit" name="limpiar_historial">Limpiar Historial</button>
-  </form>
+  <h2>📜Historial d'operacions📜</h2>
+  
   <div id="history">
     <?php
     // Obtenim el total d'operacions realitzades
@@ -208,6 +207,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       echo "$operacio<br>";
     }
     ?>
+    <form method="POST">
+    <button type="submit" name="llimpiar_historial">Llimpiar Historial🗑️</button>
+  </form>
   </div>
 </body>
 
