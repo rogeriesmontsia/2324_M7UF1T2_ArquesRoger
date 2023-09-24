@@ -49,12 +49,23 @@ function mostrarResultat($result)
 
 function mostrarAlerta($message)
 {
-  echo "<h1>$message</h1>";
+  echo "<div class=\"caixaResultat\">$message</div>";
+}
+
+function limpiarHistorial()
+{
+  $_SESSION['history'] = array(); // Limpiar el historial
+  header("Location: " . $_SERVER['PHP_SELF']); // Redirigir a la misma página
+  exit();
 }
 
 // Inicialitza l'array de l'historial si encara no existeix
 if (!isset($_SESSION['history'])) {
   $_SESSION['history'] = array();
+}
+
+if (isset($_POST['limpiar_historial'])) {
+  limpiarHistorial();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -72,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($input1)) {
       $result = Calculadora::factorial($input1);
     } else {
-      mostrarAlerta("Si us plau, introdueix un valor.");
+
       $result = 'Operació no vàlida';
     }
   } else {
@@ -100,37 +111,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $result = 'Operació no vàlida';
       }
     }
-
-    if (empty($operation) && empty($input1) && empty($input2)) {
-      mostrarAlerta("Si us plau, selecciona una operació i afegeix dos nombres.");
-      $result = 'Operació no vàlida';
-    }
-    if (empty($operation) && !empty($input1) && !empty($input2)) {
-      mostrarAlerta("Si us plau, selecciona una operacio.");
-      $result = 'Operació no vàlida';
-    }
-    if (!empty($operation) && empty($input1) && empty($input2)) {
-      mostrarAlerta("Si us plau, afegeix dos nombres.");
-      $result = 'Operació no vàlida';
-    }
-    if (!empty($operation) && !empty($input1) && empty($input2)) {
-      mostrarAlerta("Si us plau, afegeix el nombre del segon terme.");
-      $result = 'Operació no vàlida';
-    }
-    if (!empty($operation) && empty($input1) && !empty($input2)) {
-      mostrarAlerta("Si us plau, afegeix el nombre del primer terme.");
-      $result = 'Operació no vàlida';
-    } else {
-      //mostrarAlerta("Si us plau, introdueix dos valors.");
-      //$result = 'Operació no vàlida';
-    }
-  }
-
-
-  // Afegir l'operació a l'històric
-  if ($result !== 'Operació no vàlida') {
-    $operacioRealitzada = "$input1 $operation $input2 = $result";
-    array_push($_SESSION['history'], $operacioRealitzada);
   }
 }
 ?>
@@ -174,11 +154,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </form>
   <?php
   // Mostra el resultat només si l'operació és vàlida
+
+  if (empty($operation) && empty($input1) && empty($input2)) {
+    mostrarAlerta("Si us plau, selecciona una operació i afegeix dos nombres.");
+    $result = 'Operació no vàlida';
+  }
+  if (empty($operation) && !empty($input1) && !empty($input2)) {
+    mostrarAlerta("Si us plau, selecciona una operacio.");
+    $result = 'Operació no vàlida';
+  }
+  if (!empty($operation) && empty($input1) && empty($input2) && $operation !== 'factorial') {
+    mostrarAlerta("Si us plau, afegeix dos nombres.");
+    $result = 'Operació no vàlida';
+  }
+  if (!empty($operation) && !empty($input1) && empty($input2)) {
+    mostrarAlerta("Si us plau, afegeix el nombre del segon terme.");
+    $result = 'Operació no vàlida';
+  }
+  if (!empty($operation) && empty($input1) && !empty($input2)) {
+    mostrarAlerta("Si us plau, afegeix el nombre del primer terme.");
+    $result = 'Operació no vàlida';
+  }
   if ($result !== 'Operació no vàlida') {
     mostrarResultat($result);
   }
+  if ($operation === 'factorial' && empty($input1) && empty($input2)) {
+    mostrarAlerta("Si us plau, introdueix un valor.");
+    if (!empty($input1) && empty($input2)) {
+      $result = Calculadora::factorial($input1);
+    }
+    // Afegir l'operació a l'històric
+  }
+  if ($result !== 'Operació no vàlida') {
+    $operacioRealitzada = "$input1 $operation $input2 = $result";
+    array_push($_SESSION['history'], $operacioRealitzada);
+  } else {
+    //$result = 'Operació no vàlida';
+    //mostrarAlerta("Si us plau, introdueix dos valors.");
+    //$result = 'Operació no vàlida';
+  }
   ?>
   <h2>Historial d'operacions:</h2>
+  <form method="POST">
+    <button type="submit" name="limpiar_historial">Limpiar Historial</button>
+  </form>
   <div id="history">
     <?php
     // Obtenim el total d'operacions realitzades
