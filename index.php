@@ -49,7 +49,7 @@ function mostrarResultat($result)
 
 function mostrarAlerta($message)
 {
-  echo "<div class=\"caixaResultat\">$message</div>";
+  echo "<div class=\"caixaResultat\">$message</div><br>";
 }
 
 function llimpiarHistorial()
@@ -152,25 +152,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <button class="boto" type="submit" name="calcular">Calcular🪄</button>
   </form>
+
   <?php
   // Mostra el resultat només si l'operació és vàlida
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($operation) && empty($input1) && empty($input2)) {
-      mostrarAlerta("⚠️Si us plau, selecciona una operació i afegeix dos nombres.⚠️");
-      $result = 'Operació no vàlida';
+    if (empty($operation)) {
+      mostrarAlerta("⚠️Si us plau, selecciona una operació.⚠️");
     }
-    if (empty($operation) && !empty($input1) && !empty($input2)) {
-      mostrarAlerta("⚠️Si us plau, selecciona una operacio.⚠️");
-      $result = 'Operació no vàlida';
-    }
-    if (!empty($operation) && empty($input1) && empty($input2) && $operation !== 'factorial') {
+    if (empty($input1) && empty($input2) && $operation !== 'factorial') {
       mostrarAlerta("⚠️Si us plau, afegeix dos nombres.⚠️");
       $result = 'Operació no vàlida';
     }
-    if (!empty($operation) && !empty($input1) && empty($input2)) {
+    if (!empty($input1) && empty($input2)) {
       mostrarAlerta("⚠️Si us plau, afegeix el nombre del segon terme.⚠️");
       $result = 'Operació no vàlida';
     }
+    if (empty($input1) && !empty($input2)) {
+      mostrarAlerta("⚠️Si us plau, afegeix el nombre del primer terme.⚠️");
+      $result = 'Operació no vàlida';
+    }
+    
     if (!empty($operation) && empty($input1) && !empty($input2)) {
       mostrarAlerta("⚠️Si us plau, afegeix el nombre del primer terme.⚠️");
       $result = 'Operació no vàlida';
@@ -195,8 +196,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
   ?>
-  <h2>📜Historial d'operacions📜</h2>
-  
+  <div id="historial" style="display: -webkit-box">
+    <h2>📜Historial d'operacions📜</h2>
+    <form method="POST">
+      <button class ="botoEliminar" type="submit" name="llimpiar_historial" title="Eliminar historial">🗑️</button>
+    </form>
+  </div>
   <div id="history">
     <?php
     // Obtenim el total d'operacions realitzades
@@ -207,9 +212,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       echo "$operacio<br>";
     }
     ?>
-    <form method="POST">
-    <button type="submit" name="llimpiar_historial">Llimpiar Historial🗑️</button>
-  </form>
+
   </div>
 </body>
 
