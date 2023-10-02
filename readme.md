@@ -1,5 +1,14 @@
-Fer un arxiu config.php 
+#PHP
+- Fer un arxiu config.php on definim una const o define  per a elegir el tipus de factorial (iteratiu o recursiu)
 
-on definim una const o define 
+- Cal acabar de revisar la lògica per a mostrar errors.
 
-per a elegir el tipus de factorial (iteratiu o recursiu)
+    - Per a totes les operacions excepte factorial i strings 
+        - Cal plenar les dos inputs. OK
+        - Han de ser valors numèrics. OK
+        - Divisió per zero ha de mostrar la alerta de "Divisió per zero!" OK
+
+#CSS
+- Responsive
+- Radio buttons
+perplexity.ai

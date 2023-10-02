@@ -1,9 +1,8 @@
-version: '3.8'
-
+version: "3.7"
 services:
-  php-apache:
-    image: php:7.4-apache
+  apache_with_php:
+    build: .
     volumes:
-      - ./:/var/www/html
+      - ./:/var/www/html/
     ports:
-      - "8080:80"
+      - "8000:80"

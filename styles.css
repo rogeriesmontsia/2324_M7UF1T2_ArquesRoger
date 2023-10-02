@@ -2,9 +2,13 @@ header {
   margin: auto;
   width: max-content;
   height: max-content;
-  padding: 0.3px;
+  padding: 10px;
   border-radius: 20px;
   background: linear-gradient(to bottom, #ffffff, #2e4bcc);
+}
+
+hr {
+  border-color: rgba(255, 255, 255, 0.5);;
 }
 
 html {
@@ -21,27 +25,40 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-form {
+.caixaResultat {
+  margin: auto;
+  width: -webkit-fill-available;
+  height: max-content;
+  padding: 0.3px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.formulariInputs {
   margin: 0 auto;
-  
   margin-top: 10px;
 }
 
+input[type=text]{
+  width:100%;
+  border:2px solid #aaa;
+  border-radius:4px;
+  outline:none;
+  padding:8px;
+  box-sizing:border-box;
+  transition:.3s;
+}
+
+input[type=text]:focus{
+  border-color:dodgerBlue;
+  box-shadow:0 0 8px 0 dodgerBlue;
+}
+
 button {
-  background-color: #4CAF50;
-  /* Green */
-  border: none;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
   cursor: pointer;
 }
 
-.caixaResultat {
+.caixaAlerta {
   margin: auto;
   text-align: center;
   width: max-content;
@@ -52,20 +69,40 @@ button {
 }
 
 .botoEliminar {
-  border-radius: 40px;
-  background: linear-gradient(to bottom, Green, #2e4bcc);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  width: 70px; /* Ancho igual al alto para hacer un círculo perfecto */
+  height: 70px; /* Ancho igual al alto para hacer un círculo perfecto */
+  border-radius: 50%; /* Hace que el botón sea redondo (círculo) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px; /* Ajusta el tamaño del icono */
 }
 
-.boto {
+.botoEliminar:hover {
+  background-color: transparent;
+}
+
+.botoCalcular {
+  border: none;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
   background-color: rgb(98, 98, 255);
   color: black;
   border: 2px solid blue;
 }
 
-.boto:hover {
+.botoCalcular:hover {
   background-color: #4CAF50;
   color: white;
-  border: 2px solid #4CAF50;
+  border: 2px solid #215723;
 }
 
 .w3-card,
@@ -75,5 +112,5 @@ button {
 }
 
 .historial {
-  display: -webkit-box
+  display: flex; align-items: center; justify-content: center;
 }
