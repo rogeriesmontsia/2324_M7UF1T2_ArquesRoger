@@ -1,0 +1,3 @@
+<?php
+define('METODE_FACTORIAL', 'ITERATIU'); // 'ITERATIU' o 'RECURSIU'
+?>

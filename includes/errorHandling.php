@@ -1,8 +1,13 @@
 <?
 if (isset($_POST['calcular'])) {
 
-  if ((is_numeric($input2)) && ($operation === 'factorial')) {
-    mostrarAlerta("⚠️Per al calcul factorial sols introduir el primer valor.⚠️");
+  if ((!is_numeric($input1) || is_numeric($input2)) && ($operation == '+' ||
+    $operation == '-' || $operation == '*') || $operation == '/' || $operation == 'factorial') {
+    mostrarAlerta("⚠️Cal introduir valors numèrics.⚠️");
+    $result = 'Operació no vàlida';
+  }
+  if (($input1 < 0) && ($operation === 'factorial')) {
+    mostrarAlerta("⚠️Per al calcul factorial cal introduir un valor positiu.⚠️");
     $result = 'Operació no vàlida';
   }
   if (empty($input1) && empty($input2)) {
@@ -10,11 +15,10 @@ if (isset($_POST['calcular'])) {
   }
   if ($operation == '/' && $input2 == 0) {
     mostrarAlerta("⚠️No pots dividir per zero.⚠️");
-  }
-  elseif (!empty($input1) && empty($input2) && $operation !== 'factorial') {
+  } elseif (!empty($input1) && empty($input2) && $operation !== 'factorial') {
     mostrarAlerta("⚠️Si us plau, afegeix el nombre del segon terme.⚠️");
     $result = 'Operació no vàlida';
-  } 
+  }
   if (empty($input1) && !empty($input2)) {
     mostrarAlerta("⚠️Si us plau, afegeix el nombre del primer terme.⚠️");
   }

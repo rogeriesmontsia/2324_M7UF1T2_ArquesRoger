@@ -34,7 +34,7 @@ switch ($operation) {
     $result = $calculator->eliminar($input1, $input2);
     break;
   case 'factorial':
-    $result = $calculator->factorial($input1);
+    $result = $calculator->calcularFactorial($input1);
     break;
   default:
     $result = 'Operació no vàlida';
