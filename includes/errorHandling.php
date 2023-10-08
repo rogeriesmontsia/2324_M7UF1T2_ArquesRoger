@@ -1,7 +1,9 @@
 <?
 if (isset($_POST['calcular'])) {
 
-  if ((!is_numeric($input1) || is_numeric($input2)) && ($operation == '+' ||
+  if (empty($input1) && empty($input2)) {
+    mostrarAlerta("⚠️Si us plau, afegeix dos nombres.⚠️");
+  } elseif ((!is_numeric($input1) || !is_numeric($input2)) && ($operation == '+' ||
     $operation == '-' || $operation == '*') || $operation == '/' || $operation == 'factorial') {
     mostrarAlerta("⚠️Cal introduir valors numèrics.⚠️");
     $result = 'Operació no vàlida';
@@ -10,9 +12,7 @@ if (isset($_POST['calcular'])) {
     mostrarAlerta("⚠️Per al calcul factorial cal introduir un valor positiu.⚠️");
     $result = 'Operació no vàlida';
   }
-  if (empty($input1) && empty($input2)) {
-    mostrarAlerta("⚠️Si us plau, afegeix dos nombres.⚠️");
-  }
+
   if ($operation == '/' && $input2 == 0) {
     mostrarAlerta("⚠️No pots dividir per zero.⚠️");
   } elseif (!empty($input1) && empty($input2) && $operation !== 'factorial') {

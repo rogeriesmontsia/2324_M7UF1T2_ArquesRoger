@@ -62,23 +62,37 @@ if (isset($_POST['llimpiar_historial'])) {
 
 <body>
   <form class="formulariInputs" method="POST">
-    <input type="text" id="input1" name="input1" placeholder="Primer valor"><br><br>
+    <input type="text" id="input1" name="input1" placeholder="Primer valor"><br>
     <label for="operacio">Operació a realitzar:</label><br>
+    <div class="radio-option">
     <input type="radio" id="suma" name="operacio" value="+" checked="checked">
     <label for="operacio">➕</label><br>
+    </div>
+    <div class="radio-option">
     <input type="radio" id="resta" name="operacio" value="-">
     <label for="operacio">➖</label><br>
+    </div>
+    <div class="radio-option">
     <input type="radio" id="multiplicacio" name="operacio" value="*">
     <label for="operacio">✖️</label><br>
+    </div>
+    <div class="radio-option">
     <input type="radio" id="divisio" name="operacio" value="/">
     <label for="operacio">➗</label><br>
+    </div>
+    <div class="radio-option">
     <input type="radio" id="factorial" name="operacio" value="factorial">
     <label for="operacio">❗</label><br>
+    </div>
+    <div class="radio-option">
     <input type="radio" id="concatena" name="operacio" value="concatenate">
     <label for="operacio">Concatenar strings</label><br>
+    </div>
+    <div class="radio-option">
     <input type="radio" id="elimina" name="operacio" value="eliminar">
     <label for="operacio">Eliminar part string</label><br><br>
-    <input type="text" id="input2" name="input2" placeholder="Segon valor"><br><br>
+    </div>
+    <input type="text" id="input2" name="input2" placeholder="Segon valor"><br>
 
     <button class="botoCalcular" type="submit" name="calcular">Calcular🪄</button>
   </form>

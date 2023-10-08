@@ -1,14 +1,14 @@
 header {
   margin: auto;
-  width: max-content;
+  width: 100%;
   height: max-content;
-  padding: 10px;
   border-radius: 20px;
   background: linear-gradient(to bottom, #ffffff, #2e4bcc);
 }
 
 hr {
-  border-color: rgba(255, 255, 255, 0.5);;
+  border-color: rgba(255, 255, 255, 0.5);
+  ;
 }
 
 html {
@@ -27,7 +27,7 @@ body {
 
 .caixaResultat {
   margin: auto;
-  width: -webkit-fill-available;
+  width: 100%;
   height: max-content;
   padding: 0.3px;
   border-radius: 20px;
@@ -39,20 +39,38 @@ body {
   margin-top: 10px;
 }
 
-input[type=text]{
-  width:100%;
-  border:2px solid #aaa;
-  border-radius:4px;
-  outline:none;
-  padding:8px;
-  box-sizing:border-box;
-  transition:.3s;
+input[type=text] {
+  width: 100%;
+  border: 2px solid #2e4bcc;
+  border-radius: 4px;
+  outline: none;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: .3s;
 }
 
-input[type=text]:focus{
-  border-color:dodgerBlue;
-  box-shadow:0 0 8px 0 dodgerBlue;
+input[type=text]:focus {
+  border-color: green;
+  box-shadow: 0 0 8px 0 rgb(30, 255, 0);
 }
+
+input[type="radio"] {
+  /* Custom sizing and appearance */
+  width: 15px;
+  height: 15px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center horizontally */
+}
+
+.radio-option label {
+  margin-left: 10px; /* Adjust the margin to position the text */
+}
+
+
 
 button {
   cursor: pointer;
@@ -71,13 +89,17 @@ button {
 .botoEliminar {
   background-color: rgba(255, 255, 255, 0.5);
   border: none;
-  width: 70px; /* Ancho igual al alto para hacer un círculo perfecto */
-  height: 70px; /* Ancho igual al alto para hacer un círculo perfecto */
-  border-radius: 50%; /* Hace que el botón sea redondo (círculo) */
+  width: 70px;
+  /* Ancho igual al alto para hacer un círculo perfecto */
+  height: 70px;
+  /* Ancho igual al alto para hacer un círculo perfecto */
+  border-radius: 50%;
+  /* Hace que el botón sea redondo (círculo) */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px; /* Ajusta el tamaño del icono */
+  font-size: 24px;
+  /* Ajusta el tamaño del icono */
 }
 
 .botoEliminar:hover {
@@ -112,5 +134,16 @@ button {
 }
 
 .historial {
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  
+  input[type="radio"] {
+    width: 25px;
+    height: 25px;
+    margin-bottom: 5px;
+  }
 }
