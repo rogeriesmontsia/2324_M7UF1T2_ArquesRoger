@@ -1,6 +1,7 @@
 header {
   margin: auto;
-  width: 100%;
+  min-width: 25%;
+  width: max-content;
   height: max-content;
   border-radius: 20px;
   background: linear-gradient(to bottom, #ffffff, #2e4bcc);
@@ -8,7 +9,7 @@ header {
 
 hr {
   border-color: rgba(255, 255, 255, 0.5);
-  width: 50%;
+  width: 30%;
 }
 
 html {
@@ -35,6 +36,15 @@ body {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
+.caixaAlerta {
+  margin: auto;
+  text-align: center;
+  width: max-content;
+  background-color: red;
+  padding: 10px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
 
 .formulariInputs {
   margin: 0 auto;
@@ -65,27 +75,19 @@ input[type="radio"] {
 .radio-option {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center horizontally */
+  justify-content: center;
+  /* Center horizontally */
 }
 
 .radio-option label {
-  margin-left: 10px; /* Adjust the margin to position the text */
+  margin-left: 10px;
+  /* Adjust the margin to position the text */
 }
 
 
 
 button {
   cursor: pointer;
-}
-
-.caixaAlerta {
-  margin: auto;
-  text-align: center;
-  width: max-content;
-  background-color: red;
-  padding: 10px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
 }
 
 .botoEliminar {
@@ -137,11 +139,37 @@ button {
   justify-content: center;
 }
 
-@media (max-width: 900px) {
-  header{
+@media (max-width: 1024px) {
+  header {
+    width: 75%;
+  }
+
+  hr {
+    width: 40%;
+  }
+
+  .caixaResultat {
     width: 70%;
   }
-  hr {  
+}
+
+@media (max-width: 768px) {
+
+  hr {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    width: 100%;
+  }
+
+  hr {
+    width: 100%;
+  }
+
+  .caixaResultat {
     width: 100%;
   }
 
@@ -149,9 +177,5 @@ button {
     width: 25px;
     height: 25px;
     margin-bottom: 5px;
-  }
-
-  .caixaResultat {
-    width: 100%;
   }
 }
