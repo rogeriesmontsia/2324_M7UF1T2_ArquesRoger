@@ -27,12 +27,14 @@ body {
 
 .caixaResultat {
   margin: auto;
-  width: 25%;
+  min-width: 25%;
+  width: max-content;
   height: max-content;
   padding: 0.3px;
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.5);
 }
+
 
 .formulariInputs {
   margin: 0 auto;
